@@ -6,7 +6,7 @@ import (
 	"errors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	pb "grpc-straming-sample/grpc-sever/proto"
+	pb "grpc-straming-sample/grpc-sever/gen/go/hello"
 	"io"
 	"log"
 	"net/http"

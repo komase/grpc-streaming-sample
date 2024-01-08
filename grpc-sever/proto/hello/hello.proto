@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "github.com/komase/grpc-streaming-sample/grpc-server/gen/go/hello";
+//protoc --proto_path=./proto -I proto/googleapis --go_out='gen/go' --go_opt=module='github.com/komase/grpc-streaming-sample/grpc-server/gen/go' --go-grpc_out='gen/go' --go-grpc_opt=module='github.com/komase/grpc-streaming-sample/grpc-server/gen/go' --grpc-gateway_out='gen/go' --grpc-gateway_opt=module='github.com/komase/grpc-streaming-sample/grpc-server/gen/go' proto/hello/*.proto
+import "google/api/annotations.proto";
+
+service Messenger {
+  rpc SayHello (HelloRequest) returns (stream HelloReply) {
+    option (google.api.http) = {
+      get: "/v1/hello"
+    };
+  }
+}
+
+message HelloRequest {
+  string name = 1;
+  int32 count = 2;
+}
+
+message Message{
+  string message = 1;
+  int32  id = 2;
+  string name = 3;
+}
+
+message HelloReply {
+  string message = 1;
+  string name = 3;
+}
+

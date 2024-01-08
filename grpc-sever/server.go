@@ -3,7 +3,7 @@ package main
 import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	pb "grpc-straming-sample/grpc-sever/proto"
+	pb "grpc-straming-sample/grpc-sever/gen/go/hello"
 	"log"
 	"net"
 	"time"
