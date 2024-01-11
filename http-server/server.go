@@ -91,6 +91,6 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", helloHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	http.HandleFunc("/v1/hello", helloHandler)
+	log.Fatal(http.ListenAndServe(":8082", nil))
 }

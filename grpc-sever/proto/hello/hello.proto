@@ -1,7 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/komase/grpc-streaming-sample/grpc-server/gen/go/hello";
-//protoc --proto_path=./proto -I proto/googleapis --go_out='gen/go' --go_opt=module='github.com/komase/grpc-streaming-sample/grpc-server/gen/go' --go-grpc_out='gen/go' --go-grpc_opt=module='github.com/komase/grpc-streaming-sample/grpc-server/gen/go' --grpc-gateway_out='gen/go' --grpc-gateway_opt=module='github.com/komase/grpc-streaming-sample/grpc-server/gen/go' proto/hello/*.proto
+option go_package = "grpc-streaming-sample/grpc-server/gen/go/hello";
 import "google/api/annotations.proto";
 
 service Messenger {

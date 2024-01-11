@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 async function main() {
     try{
-        const response = await fetch('http://localhost:8080/?count=3');
+        const response = await fetch('http://localhost:8080/v1/hello?count=3');
         console.log(`response headers: ${JSON.stringify(response.headers)}`);
         console.log(`response statusCode: ${response.status}`);
         const data = await response.text();

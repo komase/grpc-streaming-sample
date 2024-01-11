@@ -17,7 +17,7 @@
   ],
   "paths": {
     "/v1/hello": {
-      "post": {
+      "get": {
         "operationId": "Messenger_SayHello",
         "responses": {
           "200": {
@@ -44,12 +44,17 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/HelloRequest"
-            }
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -67,18 +72,6 @@
         },
         "name": {
           "type": "string"
-        }
-      }
-    },
-    "HelloRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "count": {
-          "type": "integer",
-          "format": "int32"
         }
       }
     },

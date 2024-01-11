@@ -1,0 +1,10 @@
+.openapi-generator-ignore
+apis/MessengerApi.ts
+apis/index.ts
+index.ts
+models/HelloReply.ts
+models/ProtobufAny.ts
+models/RpcStatus.ts
+models/StreamResultOfHelloReply.ts
+models/index.ts
+runtime.ts

@@ -1,6 +1,18 @@
 {
+  "scripts": {
+    "build": "tsc",
+    "axios:run": "node dist/axios_client.js",
+    "fetch:run": "node dist/fetch_client.js",
+    "axios:api": "openapi-generator-cli generate -i ../grpc-sever/gen/openapiv2/apidocs.swagger.json -g typescript-axios -o openapi/axios/",
+    "fetch:api": "openapi-generator-cli generate -i ../grpc-sever/gen/openapiv2/apidocs.swagger.json -g typescript-fetch -o openapi/fetch/"
+  },
   "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
     "axios": "^1.6.5",
     "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "prettier": "3.1.1",
+    "typescript": "^5.3.3"
   }
 }
