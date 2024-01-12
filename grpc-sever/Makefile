@@ -16,3 +16,8 @@ generate:
 		--openapiv2_out=gen/openapiv2 \
 		--openapiv2_opt=allow_merge=true \
 		proto/hello/*.proto
+
+run_grpc_server:
+	go run main.go
+run_grpc_gateway:
+	go run reverse_proxy/main.go
