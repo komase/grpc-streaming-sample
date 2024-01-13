@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
-    "axios": "^1.6.5",
-    "node-fetch": "^2.7.0"
+    "axios": "^1.6.5"
   },
   "devDependencies": {
     "prettier": "3.1.1",
