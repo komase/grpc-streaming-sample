@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   RpcStatus,
   StreamResultOfHelloReply,
-} from '../models';
+} from '../models/index';
 import {
     RpcStatusFromJSON,
     RpcStatusToJSON,
     StreamResultOfHelloReplyFromJSON,
     StreamResultOfHelloReplyToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface MessengerSayHelloRequest {
     name?: string;

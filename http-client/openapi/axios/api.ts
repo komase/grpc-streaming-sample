@@ -14,14 +14,14 @@
 
 
 import type { Configuration } from './configuration';
-import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
 import type { RequestArgs } from './base';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
+import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
 /**
  * 
@@ -48,7 +48,7 @@ export interface HelloReply {
  * @interface ProtobufAny
  */
 export interface ProtobufAny {
-    [key: string]: object | any;
+    [key: string]: object;
 
     /**
      * 
@@ -115,7 +115,7 @@ export const MessengerApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        messengerSayHello: async (name?: string, count?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        messengerSayHello: async (name?: string, count?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/hello`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -164,9 +164,11 @@ export const MessengerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async messengerSayHello(name?: string, count?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StreamResultOfHelloReply>> {
+        async messengerSayHello(name?: string, count?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StreamResultOfHelloReply>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.messengerSayHello(name, count, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['MessengerApi.messengerSayHello']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -206,9 +208,10 @@ export class MessengerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MessengerApi
      */
-    public messengerSayHello(name?: string, count?: number, options?: AxiosRequestConfig) {
+    public messengerSayHello(name?: string, count?: number, options?: RawAxiosRequestConfig) {
         return MessengerApiFp(this.configuration).messengerSayHello(name, count, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 

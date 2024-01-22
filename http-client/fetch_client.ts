@@ -13,11 +13,11 @@ async function main() {
     const api = new MessengerApi(new Configuration(config));
     const params: MessengerSayHelloRequest = {
       name: "test",
-      count: 3,
+      count: 1,
     };
+    // If count is greater than or equal to 2, error occurs here
     const res = await api.messengerSayHello(params);
     console.log(res.result?.message);
-    console.log(res);
   } catch (error) {
     console.error(error);
   }
